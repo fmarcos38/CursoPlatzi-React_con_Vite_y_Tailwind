@@ -3,12 +3,30 @@ import { createContext, useState } from 'react'
 export const ShoppingCartContext = createContext()
 
 export const ShoppingCartProvider = ({children}) => {
-    const [count, setCount] = useState(0); console.log("count: ", count);
+    //estado para el contador de items del carrito
+    const [count, setCount] = useState(0);
+    //estado para el carrito(almacena los prods)
+    const [carrito, setCarrito] = useState([]); console.log("carrito:", carrito) 
+    //estado para abrir/cerrar Carrito
+    const [isCarritoOpen, setIsCarritoOpen] = useState(false);
+    //estado para el detalle del producto
+    const [isProdDetailOpen, setIsProdDetailOpen] = useState(false);    
+    // Product Detail · Show Product
+    const [productToShow, setProductToShow] = useState({});
+
 
     return (
         <ShoppingCartContext.Provider value={{
             count,
-            setCount
+            setCount,
+            carrito,
+            setCarrito,
+            isCarritoOpen,
+            setIsCarritoOpen,
+            isProdDetailOpen,
+            setIsProdDetailOpen,
+            productToShow,
+            setProductToShow,
         }}>
             {children}
         </ShoppingCartContext.Provider>

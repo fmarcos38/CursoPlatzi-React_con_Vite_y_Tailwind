@@ -21,10 +21,13 @@ function Home() {
     return (
         <Layout>
             Home
-            <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
+            <div className='grid gap-1 grid-cols-3 w-full max-w-screen-md'>
             {
                 products?.map(prod => {
-                    return <Card key={prod.id} images={prod.images} title={prod.title} price={prod.price}/>
+                    return <Card 
+                                key={prod.id} image={prod.images[0]} 
+                                title={prod.title} price={prod.price}
+                                description={prod.description}/>
                 })
             }
             </div>

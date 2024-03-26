@@ -106,7 +106,11 @@ function NavBar() {
                     </NavLink>
                 </li>
                 <li className="flex">
-                    <ShoppingCartIcon className='h-6 w-6 text-black'></ShoppingCartIcon> 
+                    <ShoppingCartIcon 
+                        className='h-6 w-6 text-black cursor-pointer'
+                        onClick={() => contexto.setIsCarritoOpen(true)}
+                    >
+                    </ShoppingCartIcon> 
                     {contexto.count}
                 </li>
             </ul>
