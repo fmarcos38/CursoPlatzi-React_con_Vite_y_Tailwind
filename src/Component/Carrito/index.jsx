@@ -4,10 +4,24 @@ import { useContext } from 'react'
 import { ShoppingCartContext } from '../../Context'
 import ItemCarrito from '../ItemCarrito'
 import { totalPrice } from '../../utils';
+import { Link } from 'react-router-dom'
 
 const Carrito = () => {
 
     const contexto = useContext(ShoppingCartContext);
+
+    //creo objeto con toda la info de la orden de compra
+    const handleComprar = () => {
+        const orden = {
+            date: '14/01/83',
+            products: contexto.carrito,
+            totalProds: contexto.carrito.length,
+            totalPrice: totalPrice(contexto.carrito)
+        };
+        contexto.setOrden([...contexto.orden, orden]);
+        contexto.setCarrito([]);
+        contexto.setCount(0);
+    };
 
 
     return (
@@ -21,7 +35,7 @@ const Carrito = () => {
                     </button>
                 </div>
             </div>
-            <div className='px-6 overflow-y-scroll'>
+            <div className='px-6 overflow-y-scroll flex-1'>
             {
                 contexto.carrito[0] ?
                 contexto.carrito.map(prod => {
@@ -32,13 +46,19 @@ const Carrito = () => {
                 <p>No hay prods en el carrito</p>
             }
             </div>
-            <div className='px-6'>
-                {
-                    <p className='flex justify-between items-center'>
-                        <span className='font-ligth'>Total compra: </span>
-                        <span className='font-medium text-2xl'>${totalPrice(contexto.carrito)}</span>
-                    </p>
-                }
+            <div className='px-6 mb-6'>
+                <p className='flex justify-between items-center mb-2'>
+                    <span className='font-ligth'>Total compra: </span>
+                    <span className='font-medium text-2xl'>${totalPrice(contexto.carrito)}</span>
+                </p>
+                <Link to={'/my-order'}>
+                    <button
+                        className='bg-black py-3 text-white w-full rounded-lg'
+                        onClick={() => handleComprar()}
+                    >
+                        Comprar
+                    </button>
+                </Link>
             </div>
         </aside>
     )

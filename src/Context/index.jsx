@@ -14,6 +14,8 @@ export const ShoppingCartProvider = ({children}) => {
     const [isProdDetailOpen, setIsProdDetailOpen] = useState(false);    
     // Product Detail · Show Product
     const [productToShow, setProductToShow] = useState({});
+    //estado para la orden de compras
+    const [orden, setOrden] = useState([]);
 
 
     return (
@@ -28,6 +30,8 @@ export const ShoppingCartProvider = ({children}) => {
             setIsProdDetailOpen,
             productToShow,
             setProductToShow,
+            orden,
+            setOrden,
         }}>
             {children}
         </ShoppingCartContext.Provider>
