@@ -3,10 +3,12 @@ import './styles.css'
 import { useContext } from 'react'
 import { ShoppingCartContext } from '../../Context'
 import ItemCarrito from '../ItemCarrito'
+import { totalPrice } from '../../utils';
 
 const Carrito = () => {
 
     const contexto = useContext(ShoppingCartContext);
+
 
     return (
         <aside
@@ -29,6 +31,14 @@ const Carrito = () => {
                 }) :
                 <p>No hay prods en el carrito</p>
             }
+            </div>
+            <div className='px-6'>
+                {
+                    <p className='flex justify-between items-center'>
+                        <span className='font-ligth'>Total compra: </span>
+                        <span className='font-medium text-2xl'>${totalPrice(contexto.carrito)}</span>
+                    </p>
+                }
             </div>
         </aside>
     )

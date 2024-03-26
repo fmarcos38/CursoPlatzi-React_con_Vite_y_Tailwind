@@ -2,6 +2,8 @@ import { TrashIcon } from '@heroicons/react/24/solid'
 import { useContext } from 'react';
 import { ShoppingCartContext } from '../../Context';
 
+
+
 const ItemCarrito = props => {   
     const { title, imageUrl, price } = props;
 
@@ -11,6 +13,7 @@ const ItemCarrito = props => {
     const elimProd = (title) => {
         const newCarrito = contexto.carrito.filter(p => p.title != title);
         contexto.setCarrito(newCarrito);
+        contexto.setCount(newCarrito);
     };
 
     return (

@@ -3,10 +3,11 @@ import { createContext, useState } from 'react'
 export const ShoppingCartContext = createContext()
 
 export const ShoppingCartProvider = ({children}) => {
-    //estado para el contador de items del carrito
-    const [count, setCount] = useState(0);
+    
     //estado para el carrito(almacena los prods)
-    const [carrito, setCarrito] = useState([]); console.log("carrito:", carrito) 
+    const [carrito, setCarrito] = useState([]); console.log("carrito:", carrito);
+    //estado para el contador de items del carrito
+    const [count, setCount] = useState(0); 
     //estado para abrir/cerrar Carrito
     const [isCarritoOpen, setIsCarritoOpen] = useState(false);
     //estado para el detalle del producto
