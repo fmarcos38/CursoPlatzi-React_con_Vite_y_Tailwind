@@ -17,6 +17,11 @@ import OrderCard from '../../Component/OrderCard';
 const AppRoutes = () => {
   let routes = useRoutes([
     { path: '/', element: <Home /> },
+    { path: '/clothes', element: <Home /> },
+    { path: '/electronics', element: <Home /> },
+    { path: '/furniture', element: <Home /> },
+    { path: '/others', element: <Home /> },
+    { path: '/toys', element: <Home /> },
     { path: '/my-account', element: <MyAccount /> },
     { path: '/my-order', element: <MyOrder /> },
     { path: '/my-order/last', element: <MyOrder /> }, /* muestra la orden actual */

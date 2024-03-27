@@ -21,6 +21,7 @@ const Carrito = () => {
         contexto.setOrden([...contexto.orden, orden]);
         contexto.setCarrito([]);
         contexto.setCount(0);
+        contexto.searchByTitle(null);
     };
 
 

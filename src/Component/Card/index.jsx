@@ -3,7 +3,7 @@ import { ShoppingCartContext } from  '../../Context/index';
 import { PlusIcon, CheckIcon } from '@heroicons/react/24/solid'
 
 
-const Card = ({title, price, /* image, description */}) => {
+const Card = ({title, price, category, description}) => {
 
     const contexto = useContext(ShoppingCartContext);
 
@@ -61,7 +61,7 @@ const Card = ({title, price, /* image, description */}) => {
                 <span 
                     className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5'
                     >
-                        Electronics
+                        {category}
                 </span>
                                 
                 <img 
@@ -84,7 +84,7 @@ const Card = ({title, price, /* image, description */}) => {
             </figure>
             <p className='flex justify-between'>
                 <span className='text-sm font-light'>{title}</span>
-                <span className='text-lg font-medium'>{price}</span>
+                <span className='text-lg font-medium'>${price}</span>
             </p>
         </div>
     )

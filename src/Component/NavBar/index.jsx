@@ -16,41 +16,69 @@ function NavBar() {
             <ul className='flex items-center gap-3'>
                 {/* logo */}
                 <li className='font-semibold text-lg'>
-                    <NavLink to='/'>
+                    <NavLink to='/' 
+                        className={({ isActive }) => isActive ? activeStyle : undefined}
+                        onClick={() => contexto.setSearchByCategory()}>
                         Shopi
                     </NavLink>
                 </li>
+                {/* Home */}
                 <li>
-                    <NavLink to='/' className={({ isActive }) => isActive ? activeStyle : undefined}>
+                    <NavLink 
+                        to='/' 
+                        className={({ isActive }) => isActive ? activeStyle : undefined}
+                        onClick={() => contexto.setSearchByCategory()}
+                    >
                         All
                     </NavLink>
                 </li>
+                {/* categoria clothes */}
                 <li>
-                    <NavLink to='/clothes' className={({ isActive }) => isActive ? activeStyle : undefined}>
+                    <NavLink 
+                        to='/clothes' 
+                        className={({ isActive }) => isActive ? activeStyle : undefined}
+                        onClick={() => contexto.setSearchByCategory('clothes')}
+                    >
                         Clothes
                     </NavLink>
                 </li>
+                {/* categoria electronic */}
                 <li>
-                    <NavLink to='/electronics' className={({ isActive }) => isActive ? activeStyle : undefined}>
+                    <NavLink 
+                        to='/electronics' 
+                        className={({ isActive }) => isActive ? activeStyle : undefined}
+                        onClick={() => contexto.setSearchByCategory('electronics')}
+                    >
                         Electronics
                     </NavLink>
                 </li>
+                {/* categoria furnitures */}
                 <li>
-                    <NavLink to='/furnitures' className={({ isActive }) => isActive ? activeStyle : undefined}>
+                    <NavLink 
+                        to='/furniture' 
+                        className={({ isActive }) => isActive ? activeStyle : undefined}
+                        onClick={() => contexto.setSearchByCategory('furniture')}
+                    >
                         Furnitures
                     </NavLink>
                 </li>
+                {/* categoria toy */}
                 <li>
-                    <NavLink to='/toys' className={({ isActive }) => isActive ? activeStyle : undefined}>
+                    <NavLink 
+                        to='/toys' 
+                        className={({ isActive }) => isActive ? activeStyle : undefined}
+                        onClick={() => contexto.setSearchByCategory('toys')}
+                    >
                         Toys
                     </NavLink>
                 </li>
+                {/* categoria others */}
                 <li>
                     <NavLink
                         to='/others'
-                        className={({ isActive }) =>
-                            isActive ? activeStyle : undefined
-                        }>
+                        className={({ isActive }) => isActive ? activeStyle : undefined}
+                        onClick={() => contexto.setSearchByCategory('others')}
+                    >
                         Others
                     </NavLink>
                 </li>
