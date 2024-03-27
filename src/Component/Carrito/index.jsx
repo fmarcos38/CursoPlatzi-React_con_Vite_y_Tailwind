@@ -51,7 +51,7 @@ const Carrito = () => {
                     <span className='font-ligth'>Total compra: </span>
                     <span className='font-medium text-2xl'>${totalPrice(contexto.carrito)}</span>
                 </p>
-                <Link to={'/my-order'}>
+                <Link to={'/my-order/last'}>
                     <button
                         className='bg-black py-3 text-white w-full rounded-lg'
                         onClick={() => handleComprar()}

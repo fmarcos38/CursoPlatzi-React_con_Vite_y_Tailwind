@@ -8,7 +8,9 @@ import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 function MyOrder() {
 
   const contexto = useContext(ShoppingCartContext);
-
+  const currentPath = window.location.pathname;
+  let index = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+  if (index === 'last') index = contexto.orden?.length - 1; //
 
   return (
     <Layout>
@@ -20,7 +22,7 @@ function MyOrder() {
       </div>
       <div className='flex flex-col w-80'>
         {
-          contexto.orden?.slice(-1)[0].products.map(product => (
+          contexto.orden?.[index]?.products.map(product => (
             <ItemCarrito
               key={product.title}
               id={product.id}
