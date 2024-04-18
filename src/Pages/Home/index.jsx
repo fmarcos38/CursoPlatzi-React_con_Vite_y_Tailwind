@@ -6,6 +6,13 @@ import { ShoppingCartContext } from '../../Context';
 function Home() {
 
     const contexto = useContext(ShoppingCartContext);
+    //proteccion de ruta
+    // Account
+    const account = localStorage.getItem('account')
+    const parsedAccount = JSON.parse(account)
+    // Has an account
+    const noAccountInLocalStorage = parsedAccount ? Object.keys(parsedAccount).length === 0 : true;
+    console.log(noAccountInLocalStorage);
 
     //funcion para mostrar SI hay busqueda o no
     const renderView = () => {
@@ -31,23 +38,33 @@ function Home() {
 
     return (
         <Layout>
-            <div className='flex items-center justify-center relative w-80 mb-4'>
-                <h1 className='font-medium text-xl'>Exclusive Products</h1>
-            </div>
-            <input
-                type="text"
-                placeholder='Search a product'
-                className='rounded-lg border border-black w-80 p-4 mb-4 focus:outline-none'
-                onChange={(event) => contexto.setSearchByTitle(event.target.value)} 
-            />
-            <div className='grid gap-1 grid-cols-3 w-full max-w-screen-md'>
             {
-                renderView()
+                noAccountInLocalStorage ? (
+                    <>
+                        <p>
+                            <b>Debes estar registrado</b>
+                        </p>
+                    </>
+                ) : (
+                    <>
+                        <div className='flex items-center justify-center relative w-80 mb-4'>
+                            <h1 className='font-medium text-xl'>Exclusive Products</h1 >
+                        </div >
+                        <input
+                            type="text"
+                            placeholder='Search a product'
+                            className='rounded-lg border border-black w-80 p-4 mb-4 focus:outline-none'
+                            onChange={(event) => contexto.setSearchByTitle(event.target.value)}
+                        />
+                        <div className='grid gap-1 grid-cols-3 w-full max-w-screen-md'>
+                            {
+                                renderView()
+                            }
+                        </div>
+                    </>
+                )
             }
-            </div>
-
-            {/*  */}            
-        </Layout>
+        </Layout >
     )
 }
 

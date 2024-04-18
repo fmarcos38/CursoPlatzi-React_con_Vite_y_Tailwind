@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import { ShoppingCartContext } from  '../../Context/index';
 import { NavLink } from 'react-router-dom';
 import { ShoppingCartIcon } from '@heroicons/react/24/solid'
@@ -8,7 +8,69 @@ function NavBar() {
     //para los estilos
     const activeStyle = 'underline underline-offset-4';
 
-    const contexto = useContext(ShoppingCartContext);
+    const context = useContext(ShoppingCartContext);
+
+    const handleSignOut = () => {
+        //pongo sign-out en false
+        const stringifiedSignOut = JSON.stringify(false);
+        localStorage.setItem('sign-out', stringifiedSignOut);
+        context.setSignOut(false);
+        //borro user del localStorage
+        //const stringifiedAccount = JSON.stringify({});
+        localStorage.setItem('account', JSON.stringify({}))
+    }
+    //funcion q retorna NavLink SignIn o SingOut
+    const SignInOrOut = () => {
+        if(!context.signOut){
+            return(
+                <NavLink to='/sign-in' className={({ isActive }) => isActive ? activeStyle : undefined }>
+                    Sign In
+                </NavLink>
+            )
+        }else{
+            return(
+                <ul className='flex items-center gap-3'>
+                    {/* name userLog */}
+                    <li className='text-black/60'>
+                        <p>
+                            Hola, <b>{context.account.name}</b>
+                        </p>
+                    </li>
+                    {/* my orders */}
+                    <li>
+                        <NavLink to='/my-orders' className={({ isActive }) => isActive ? activeStyle : undefined}>
+                            My Orders
+                        </NavLink>
+                    </li>
+                    {/* my account */}
+                    <li>
+                        <NavLink to='/my-account' className={({ isActive }) => isActive ? activeStyle : undefined}>
+                            My Account
+                        </NavLink>
+                    </li>
+                    {/* logout */}
+                    <li>
+                        <NavLink to='/sign-in' className={({ isActive }) => isActive ? activeStyle : undefined} 
+                            onClick={() => handleSignOut()}
+                            >
+                            Sign out
+                        </NavLink>
+                    </li>
+                    {/* carrito */}
+                    <li className="flex">
+                        <NavLink to={'/carrito'} className={({ isActive }) => isActive ? activeStyle : undefined}>
+                            <ShoppingCartIcon className='h-6 w-6 text-black cursor-pointer'
+                                onClick={() => context.setIsCarritoOpen(true)}
+                            >
+                            </ShoppingCartIcon>
+                            {context.count}
+                        </NavLink>
+                    </li>
+                </ul>
+            )
+        }
+    };
+
 
     return (
         <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light'>
@@ -16,18 +78,18 @@ function NavBar() {
             <ul className='flex items-center gap-3'>
                 {/* logo */}
                 <li className='font-semibold text-lg'>
-                    <NavLink to='/' 
+                    <NavLink to='/home' 
                         className={({ isActive }) => isActive ? activeStyle : undefined}
-                        onClick={() => contexto.setSearchByCategory()}>
+                        onClick={() => context.setSearchByCategory()}>
                         Shopi
                     </NavLink>
                 </li>
-                {/* Home */}
+                {/* All */}
                 <li>
                     <NavLink 
-                        to='/' 
+                        to='/home' 
                         className={({ isActive }) => isActive ? activeStyle : undefined}
-                        onClick={() => contexto.setSearchByCategory()}
+                        onClick={() => context.setSearchByCategory()}
                     >
                         All
                     </NavLink>
@@ -37,7 +99,7 @@ function NavBar() {
                     <NavLink 
                         to='/clothes' 
                         className={({ isActive }) => isActive ? activeStyle : undefined}
-                        onClick={() => contexto.setSearchByCategory('clothes')}
+                        onClick={() => context.setSearchByCategory('clothes')}
                     >
                         Clothes
                     </NavLink>
@@ -47,7 +109,7 @@ function NavBar() {
                     <NavLink 
                         to='/electronics' 
                         className={({ isActive }) => isActive ? activeStyle : undefined}
-                        onClick={() => contexto.setSearchByCategory('electronics')}
+                        onClick={() => context.setSearchByCategory('electronics')}
                     >
                         Electronics
                     </NavLink>
@@ -57,7 +119,7 @@ function NavBar() {
                     <NavLink 
                         to='/furniture' 
                         className={({ isActive }) => isActive ? activeStyle : undefined}
-                        onClick={() => contexto.setSearchByCategory('furniture')}
+                        onClick={() => context.setSearchByCategory('furniture')}
                     >
                         Furnitures
                     </NavLink>
@@ -67,7 +129,7 @@ function NavBar() {
                     <NavLink 
                         to='/toys' 
                         className={({ isActive }) => isActive ? activeStyle : undefined}
-                        onClick={() => contexto.setSearchByCategory('toys')}
+                        onClick={() => context.setSearchByCategory('toys')}
                     >
                         Toys
                     </NavLink>
@@ -77,49 +139,17 @@ function NavBar() {
                     <NavLink
                         to='/others'
                         className={({ isActive }) => isActive ? activeStyle : undefined}
-                        onClick={() => contexto.setSearchByCategory('others')}
+                        onClick={() => context.setSearchByCategory('others')}
                     >
                         Others
                     </NavLink>
                 </li>
             </ul>
+
             {/* items der */}
-            <ul className='flex items-center gap-3'>
-                <li className='text-black/60'>
-                    teff@platzi.com
-                </li>
-                <li>
-                    <NavLink to='/my-orders' className={({ isActive }) => isActive ? activeStyle : undefined }>
-                        My Orders
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to='/my-account'
-                        className={({ isActive }) =>
-                            isActive ? activeStyle : undefined
-                        }>
-                        My Account
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to='/sing-in'
-                        className={({ isActive }) =>
-                            isActive ? activeStyle : undefined
-                        }>
-                        Sign In
-                    </NavLink>
-                </li>
-                <li className="flex">
-                    <ShoppingCartIcon 
-                        className='h-6 w-6 text-black cursor-pointer'
-                        onClick={() => contexto.setIsCarritoOpen(true)}
-                    >
-                    </ShoppingCartIcon> 
-                    {contexto.count}
-                </li>
-            </ul>
+            {
+                SignInOrOut()
+            }
         </nav>
     )
 }

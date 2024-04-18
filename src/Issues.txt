@@ -1,0 +1,16 @@
+1-Sign In: OK
+2-SignOut: OK
+3-Proteccion de rutas: OK
+4-login: 
+5-LogOut (no borra data user en localS):
+6-Navbar dinamica (si no estoy logueado NO muestra prods NI items derechos SOLO Sign In): OK
+3-Maquetacion de las vistas
+4-responsive design
+
+
+
+-Los datos del user están en el local storage (manejarlos como en la app ToDo machine)
+
+
+-Es importante en una prueba tecnica los commits q saean descriptivos
+-poner un Readme

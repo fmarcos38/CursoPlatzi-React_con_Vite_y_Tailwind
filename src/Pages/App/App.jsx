@@ -4,7 +4,7 @@ import Home from '../Home';
 import MyAccount from '../MyAccount';
 import MyOrder from '../MyOrder';
 import MyOrders from '../MyOrders';
-import SignIn from '../SignIn';
+import SingIn from '../SingIn';
 import NotFound from '../NotFOund';
 import NavBar from '../../Component/NavBar';
 import Card from '../../Component/Card';
@@ -16,7 +16,7 @@ import OrderCard from '../../Component/OrderCard';
 //---funcion para enrutar---
 const AppRoutes = () => {
   let routes = useRoutes([
-    { path: '/', element: <Home /> },
+    { path: '/home', element: <Home /> },
     { path: '/clothes', element: <Home /> },
     { path: '/electronics', element: <Home /> },
     { path: '/furniture', element: <Home /> },
@@ -27,7 +27,8 @@ const AppRoutes = () => {
     { path: '/my-order/last', element: <MyOrder /> }, /* muestra la orden actual */
     { path: '/my-orders', element: <MyOrders /> },
     { path: '/my-order/:id', element: <MyOrder /> }, /* muestra una orden de la lista de mis ordenes */
-    { path: '/sign-in', element: <SignIn /> },
+    { path: '/sign-in', element: <SingIn /> },
+    { path: '/carrito', element: <Carrito/> },
     { path: '/*', element: <NotFound /> },    
     { path: '/productDetail', element: <ProductDetail /> },
 
@@ -46,8 +47,6 @@ const App = () => {
       <BrowserRouter>
         <AppRoutes />
         <NavBar />
-        <ProductDetail/>
-        <Carrito/>
       </BrowserRouter>
     </ShoppingCartProvider>    
   )

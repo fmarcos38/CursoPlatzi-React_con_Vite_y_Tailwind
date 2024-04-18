@@ -1,17 +1,48 @@
 import { createContext, useState, useEffect } from 'react'
 
-export const ShoppingCartContext = createContext()
+export const ShoppingCartContext = createContext();
+
+//Inicializar variables account y sign-out en localStorage
+export const initializeLocalStorage = () => {
+    const accountInLocalStorage = localStorage.getItem('account')
+    const signOutInLocalStorage = localStorage.getItem('sign-out')
+    let parsedAccount
+    let parsedSignOut
+
+    if (!accountInLocalStorage) {
+        localStorage.setItem('account', JSON.stringify({}))
+        parsedAccount = {}
+    } else {
+        parsedAccount = JSON.parse(accountInLocalStorage)
+    }
+
+    if (!signOutInLocalStorage) {
+        localStorage.setItem('sign-out', JSON.stringify(false))
+        parsedSignOut = false
+    } else {
+        parsedSignOut = JSON.parse(signOutInLocalStorage)
+    }
+}
 
 export const ShoppingCartProvider = ({children}) => {
-    
+
+    // My account
+    const accountInLocalStorage = localStorage.getItem('account');
+    const parsedAccount = JSON.parse(accountInLocalStorage)
+    const signOutInLocalStorage = localStorage.getItem('sign-out');
+    const parsedSignOut = JSON.parse(signOutInLocalStorage)
+    //userLog
+    const [account, setAccount] = useState(parsedAccount); 
+    // Sign out
+    const [signOut, setSignOut] = useState(parsedSignOut); 
     //estado para los productos
-    const [products, setProducts] = useState(null); console.log("products: ",products)
+    const [products, setProducts] = useState(null); 
     //estado para filtrar
-    const [filteredItems, setFilteredItems] = useState(null);console.log("filteredItems: ",filteredItems)
+    const [filteredItems, setFilteredItems] = useState(null);
     // estado busca x titulo
-    const [searchByTitle, setSearchByTitle] = useState(null);console.log("searchByTitle: ",searchByTitle)
+    const [searchByTitle, setSearchByTitle] = useState(null);
     //estado para buscar por categoría
-    const [ searchByCategory, setSearchByCategory] = useState(null); console.log("searchByCategory: ",searchByCategory)
+    const [ searchByCategory, setSearchByCategory] = useState(null); 
     //estado para el carrito(almacena los prods)
     const [carrito, setCarrito] = useState([]);  
     //estado para el contador de items del carrito
@@ -24,6 +55,8 @@ export const ShoppingCartProvider = ({children}) => {
     const [productToShow, setProductToShow] = useState({});
     //estado para la orden de compras
     const [orden, setOrden] = useState([]);
+
+    
 
     //filtra por titulo
     const filteredItemsByTitle = (products, searchByTitle) => {
@@ -74,6 +107,10 @@ export const ShoppingCartProvider = ({children}) => {
 
     return (
         <ShoppingCartContext.Provider value={{
+            account,
+            setAccount,
+            signOut,
+            setSignOut,
             products,
             setProducts,
             searchByTitle,

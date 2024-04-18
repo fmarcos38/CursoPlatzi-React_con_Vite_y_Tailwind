@@ -1,0 +1,26 @@
+form {
+    display: flex;
+    flex-direction: column;
+}
+.input-field {
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    background: linear-gradient(to right, #e46671, #ebbd7e);
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.input-field:focus {
+    outline: none;
+    box-shadow: 0 0 10px #6588f1, 0 0 10px #8190d0;
+}
+
+.btnCreate{
+    margin-top: 20px;
+    border-radius: 8px;
+    padding: 12px 20px;
+    background: linear-gradient(to right, #e46671, #ebbd7e);
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
