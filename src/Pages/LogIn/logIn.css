@@ -1,0 +1,9 @@
+.contLoin{
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 300px;
+    border-radius: 5%;
+}

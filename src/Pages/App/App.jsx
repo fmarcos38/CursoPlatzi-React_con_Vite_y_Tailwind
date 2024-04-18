@@ -1,4 +1,4 @@
-import { BrowserRouter, useRoutes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, } from 'react-router-dom';
 import './App.css'
 import Home from '../Home';
 import MyAccount from '../MyAccount';
@@ -12,41 +12,36 @@ import ProductDetail from '../../Component/ProductDetail';
 import { ShoppingCartProvider } from '../../Context';
 import Carrito from '../../Component/Carrito';
 import OrderCard from '../../Component/OrderCard';
+import LogIn from '../LogIn';
 
-//---funcion para enrutar---
-const AppRoutes = () => {
-  let routes = useRoutes([
-    { path: '/home', element: <Home /> },
-    { path: '/clothes', element: <Home /> },
-    { path: '/electronics', element: <Home /> },
-    { path: '/furniture', element: <Home /> },
-    { path: '/others', element: <Home /> },
-    { path: '/toys', element: <Home /> },
-    { path: '/my-account', element: <MyAccount /> },
-    { path: '/my-order', element: <MyOrder /> },
-    { path: '/my-order/last', element: <MyOrder /> }, /* muestra la orden actual */
-    { path: '/my-orders', element: <MyOrders /> },
-    { path: '/my-order/:id', element: <MyOrder /> }, /* muestra una orden de la lista de mis ordenes */
-    { path: '/sign-in', element: <SingIn /> },
-    { path: '/carrito', element: <Carrito/> },
-    { path: '/*', element: <NotFound /> },    
-    { path: '/productDetail', element: <ProductDetail /> },
-
-    //urls para el programador - para ver los tipos de Cards
-    { path: '/card', element: <Card /> },
-    { path: '/orderCard', element: <OrderCard/>}
-  ])
-
-  return routes
-}
 
 const App = () => {
-
   return (      
     <ShoppingCartProvider>
       <BrowserRouter>
-        <AppRoutes />
         <NavBar />
+        <Routes>
+          <Route path='/sign-in' element={<SingIn/>} />          
+          <Route exact path='/' element={<Home/>} />
+          <Route path='/clothes' element={<Home/>} />
+          <Route path='/electronics' element={<Home/>} />
+          <Route path='/furniture' element={<Home/>} />
+          <Route path='/others' element={<Home/>} />
+          <Route path='/toys' element={<Home/>} />
+          <Route path='/my-account' element={<MyAccount/>} />
+          <Route path='/my-order' element={<LogIn/>} />
+          <Route path='/my-orders' element={<MyOrders/>} />
+          <Route path='//my-order/last' element={<MyOrder/>} /> {/* muestra la orden actual */}
+          <Route path='/my-order/:id' element={<MyOrder/>} />
+          <Route path='/carrito/:id' element={<Carrito/>} />
+          <Route path='/*' element={<NotFound/>} />
+          <Route path='/productDetail' element={<ProductDetail/>} />
+
+          {/* ruta para el desarrollador */}
+          <Route path='/card' element={<Card/>} />
+          <Route path='/orderCard' element={<OrderCard/>} />
+          <Route path='/login' element={<LogIn/>} />
+        </Routes>
       </BrowserRouter>
     </ShoppingCartProvider>    
   )

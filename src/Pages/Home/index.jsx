@@ -42,7 +42,7 @@ function Home() {
                 noAccountInLocalStorage ? (
                     <>
                         <p>
-                            <b>Debes estar registrado</b>
+                            <b>Debes estar registrado para ver nuestros Productos</b>
                         </p>
                     </>
                 ) : (
