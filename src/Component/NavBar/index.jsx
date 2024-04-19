@@ -2,6 +2,8 @@ import React, { useContext, useEffect } from "react"
 import { ShoppingCartContext } from  '../../Context/index';
 import { NavLink } from 'react-router-dom';
 import { ShoppingCartIcon } from '@heroicons/react/24/solid'
+import './nav.css';
+
 
 
 function NavBar() {
@@ -73,83 +75,115 @@ function NavBar() {
 
 
     return (
-        <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light'>
-            {/* items izq */}
-            <ul className='flex items-center gap-3'>
-                {/* logo */}
-                <li className='font-semibold text-lg'>
-                    <NavLink to='/home' 
-                        className={({ isActive }) => isActive ? activeStyle : undefined}
-                        onClick={() => context.setSearchByCategory()}>
-                        Shopi
-                    </NavLink>
-                </li>
-                {/* All */}
-                <li>
-                    <NavLink 
-                        to='/all' 
-                        className={({ isActive }) => isActive ? activeStyle : undefined}
-                        onClick={() => context.setSearchByCategory()}
-                    >
-                        All
-                    </NavLink>
-                </li>
-                {/* categoria clothes */}
-                <li>
-                    <NavLink 
-                        to='/clothes' 
-                        className={({ isActive }) => isActive ? activeStyle : undefined}
-                        onClick={() => context.setSearchByCategory('clothes')}
-                    >
-                        Clothes
-                    </NavLink>
-                </li>
-                {/* categoria electronic */}
-                <li>
-                    <NavLink 
-                        to='/electronics' 
-                        className={({ isActive }) => isActive ? activeStyle : undefined}
-                        onClick={() => context.setSearchByCategory('electronics')}
-                    >
-                        Electronics
-                    </NavLink>
-                </li>
-                {/* categoria furnitures */}
-                <li>
-                    <NavLink 
-                        to='/furniture' 
-                        className={({ isActive }) => isActive ? activeStyle : undefined}
-                        onClick={() => context.setSearchByCategory('furniture')}
-                    >
-                        Furnitures
-                    </NavLink>
-                </li>
-                {/* categoria toy */}
-                <li>
-                    <NavLink 
-                        to='/toys' 
-                        className={({ isActive }) => isActive ? activeStyle : undefined}
-                        onClick={() => context.setSearchByCategory('toys')}
-                    >
-                        Toys
-                    </NavLink>
-                </li>
-                {/* categoria others */}
-                <li>
-                    <NavLink
-                        to='/others'
-                        className={({ isActive }) => isActive ? activeStyle : undefined}
-                        onClick={() => context.setSearchByCategory('others')}
-                    >
-                        Others
-                    </NavLink>
-                </li>
-            </ul>
+        <nav>
+            <div className='contBarraPantalla flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light'>
+                {/* items izq */}
+                <ul className='flex items-center gap-3'>
+                    {/* logo */}
+                    <li className='font-semibold text-lg'>
+                        <NavLink to='/home' className={({ isActive }) => isActive ? activeStyle : undefined}>
+                            Shopi
+                        </NavLink>
+                    </li>
+                    {/* All */}
+                    <li>
+                        <NavLink to='/all' className={({ isActive }) => isActive ? activeStyle : undefined}>
+                            All
+                        </NavLink>
+                    </li>
+                    {/* categoria clothes */}
+                    <li>
+                        <NavLink
+                            to='/clothes'
+                            className={({ isActive }) => isActive ? activeStyle : undefined}
+                            onClick={() => context.setSearchByCategory('clothes')}
+                        >
+                            Clothes
+                        </NavLink>
+                    </li>
+                    {/* categoria electronic */}
+                    <li>
+                        <NavLink
+                            to='/electronics'
+                            className={({ isActive }) => isActive ? activeStyle : undefined}
+                            onClick={() => context.setSearchByCategory('electronics')}
+                        >
+                            Electronics
+                        </NavLink>
+                    </li>
+                    {/* categoria furnitures */}
+                    <li>
+                        <NavLink
+                            to='/furniture'
+                            className={({ isActive }) => isActive ? activeStyle : undefined}
+                            onClick={() => context.setSearchByCategory('furniture')}
+                        >
+                            Furnitures
+                        </NavLink>
+                    </li>
+                    {/* categoria toy */}
+                    <li>
+                        <NavLink
+                            to='/toys'
+                            className={({ isActive }) => isActive ? activeStyle : undefined}
+                            onClick={() => context.setSearchByCategory('toys')}
+                        >
+                            Toys
+                        </NavLink>
+                    </li>
+                    {/* categoria others */}
+                    <li>
+                        <NavLink
+                            to='/others'
+                            className={({ isActive }) => isActive ? activeStyle : undefined}
+                            onClick={() => context.setSearchByCategory('others')}
+                        >
+                            Others
+                        </NavLink>
+                    </li>
+                </ul>
 
-            {/* items der */}
-            {
-                SignInOrOut()
-            }
+                {/* items der */}
+                {
+                    SignInOrOut()
+                }
+            </div>
+
+            {/* menu Pantalla chica */}
+            <div className="contMenuH">
+                <div className="menuIzq">
+                    <ul>
+                        {/* Logo */}
+                        <li>
+                            <NavLink to='/home' className={({ isActive }) => isActive ? activeStyle : undefined} >
+                                Logo
+                            </NavLink>
+                        </li>
+                        {/* menu desplegable */}
+                        <li class="">
+                            <button onClick={() => context.setBtnOpen(true)}>Menu</button>
+                        </li>
+                    </ul>
+                </div>
+
+                {/* menu desp Derecho */}
+                <div className="menuDer">
+                    <ul>
+                        <li>
+                            menu
+                        </li>
+                        <li>
+                            <NavLink to={'/carrito'} className={({ isActive }) => isActive ? activeStyle : undefined}>
+                                <ShoppingCartIcon className='h-6 w-6 text-black cursor-pointer'
+                                    onClick={() => context.setIsCarritoOpen(true)}
+                                >
+                                </ShoppingCartIcon>
+                                {context.count}
+                            </NavLink>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     )
 }

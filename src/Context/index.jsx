@@ -42,7 +42,7 @@ export const ShoppingCartProvider = ({children}) => {
     // estado busca x titulo
     const [searchByTitle, setSearchByTitle] = useState(null);
     //estado para buscar por categoría
-    const [ searchByCategory, setSearchByCategory] = useState(null); 
+    const [ searchByCategory, setSearchByCategory] = useState(null);
     //estado para el carrito(almacena los prods)
     const [carrito, setCarrito] = useState([]);  
     //estado para el contador de items del carrito
@@ -55,7 +55,8 @@ export const ShoppingCartProvider = ({children}) => {
     const [productToShow, setProductToShow] = useState({});
     //estado para la orden de compras
     const [orden, setOrden] = useState([]);
-
+    //estado para el Boton Menu desplegable
+    const [btnOpen, setBtnOpen] = useState(false); console.log("open:", btnOpen)
     
 
     //filtra por titulo
@@ -66,7 +67,6 @@ export const ShoppingCartProvider = ({children}) => {
     const filteredItemsByCategory = (products, searchByCategory) => {
         return products?.filter(item => item.category.name.toLowerCase().includes(searchByCategory.toLowerCase()))
     }
-
     //combinación de filtros
     const filterBy = (searchType, products, searchByTitle, searchByCategory) => {
         if (searchType === 'BY_TITLE') {
@@ -130,6 +130,8 @@ export const ShoppingCartProvider = ({children}) => {
             setProductToShow,
             orden,
             setOrden,
+            btnOpen, 
+            setBtnOpen,
         }}>
             {children}
         </ShoppingCartContext.Provider>

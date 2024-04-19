@@ -13,6 +13,7 @@ import { ShoppingCartProvider } from '../../Context';
 import Carrito from '../../Component/Carrito';
 import OrderCard from '../../Component/OrderCard';
 import LogIn from '../LogIn';
+import MenuPantallaChica from '../../Component/MenuPantallaChica';
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
     <ShoppingCartProvider>
       <BrowserRouter>
         <NavBar />
+        <MenuPantallaChica/>
         <Routes>
           <Route path='/home' element={<Home/>} />
           <Route path='/sign-in' element={<SingIn/>} /> 
@@ -43,6 +45,7 @@ const App = () => {
           <Route path='/orderCard' element={<OrderCard/>} />
           <Route path='/login' element={<LogIn/>} />
         </Routes>
+        <Carrito/>
       </BrowserRouter>
     </ShoppingCartProvider>    
   )

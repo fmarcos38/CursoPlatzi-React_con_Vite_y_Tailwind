@@ -6,7 +6,8 @@
 6-Proteccion de rutas: OK
 7-Navbar dinamica (si no estoy logueado NO muestra prods NI items derechos SOLO Sign In): OK
 8-Maquetacion de las vistas:
-9-responsive design:
+9-Favoritos:
+10-responsive design:
 
 
 

@@ -1,0 +1,28 @@
+.contBarraPantalla{
+    background-color: antiquewhite;
+}
+.contMenuH{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(136, 228, 99);
+}
+.menuIzq ul, .menuDer ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px 0 5px;
+    gap: 10px
+}
+
+
+@media screen and (min-width: 770px) {
+    .contMenuH{
+        display: none;
+    }
+}
+@media screen and (max-width: 769px) {
+    .contBarraPantalla{
+        display: none;
+    }
+}
