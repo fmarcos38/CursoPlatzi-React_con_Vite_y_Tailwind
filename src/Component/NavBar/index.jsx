@@ -16,9 +16,9 @@ function NavBar() {
         localStorage.setItem('sign-out', stringifiedSignOut);
         context.setSignOut(false);
         //borro user del localStorage
-        //const stringifiedAccount = JSON.stringify({});
         localStorage.setItem('account', JSON.stringify({}))
     }
+
     //funcion q retorna NavLink SignIn o SingOut
     const SignInOrOut = () => {
         if(!context.signOut){
@@ -87,7 +87,7 @@ function NavBar() {
                 {/* All */}
                 <li>
                     <NavLink 
-                        to='/home' 
+                        to='/all' 
                         className={({ isActive }) => isActive ? activeStyle : undefined}
                         onClick={() => context.setSearchByCategory()}
                     >

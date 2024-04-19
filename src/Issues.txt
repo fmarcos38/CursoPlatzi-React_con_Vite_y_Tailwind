@@ -1,11 +1,12 @@
 1-Sign In: OK
 2-SignOut: OK
-3-Proteccion de rutas: OK
-4-login: 
-5-LogOut (no borra data user en localS):
-6-Navbar dinamica (si no estoy logueado NO muestra prods NI items derechos SOLO Sign In): OK
-3-Maquetacion de las vistas
-4-responsive design
+3-login: OK
+4-LogOut (no borra data user en localS):
+5-Manejo de errores en SigIn y LogIn: OK
+6-Proteccion de rutas: OK
+7-Navbar dinamica (si no estoy logueado NO muestra prods NI items derechos SOLO Sign In): OK
+8-Maquetacion de las vistas:
+9-responsive design:
 
 
 

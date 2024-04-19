@@ -8,11 +8,8 @@ function Home() {
     const contexto = useContext(ShoppingCartContext);
     //proteccion de ruta
     // Account
-    const account = localStorage.getItem('account')
-    const parsedAccount = JSON.parse(account)
-    // Has an account
-    const noAccountInLocalStorage = parsedAccount ? Object.keys(parsedAccount).length === 0 : true;
-    console.log(noAccountInLocalStorage);
+    const signOut = localStorage.getItem('sign-out')
+    const parsedAccount = JSON.parse(signOut);
 
     //funcion para mostrar SI hay busqueda o no
     const renderView = () => {
@@ -39,7 +36,7 @@ function Home() {
     return (
         <Layout>
             {
-                noAccountInLocalStorage ? (
+                !parsedAccount ? (
                     <>
                         <p>
                             <b>Debes estar registrado para ver nuestros Productos</b>

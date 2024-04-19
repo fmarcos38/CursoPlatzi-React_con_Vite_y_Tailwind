@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import Layout from '../../Component/Layout';
 import './signIn.css';
 import { ShoppingCartContext } from '../../Context';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function SingIn() {
 
@@ -50,12 +50,8 @@ function SingIn() {
 
     if (validacionesForm()) {
       const stringifyUser = JSON.stringify(user);
-      localStorage.setItem('account', stringifyUser);
-      const stringifiedSignOut = JSON.stringify(true)
-      localStorage.setItem('sign-out', stringifiedSignOut);
-
+      localStorage.setItem('account', stringifyUser); 
       context.setAccount(user);
-      context.setSignOut(true);
 
       if (context.account.name) {
         alert("User creado con exito");
@@ -79,6 +75,14 @@ function SingIn() {
         {error.password && <span>{error.password}</span>}
 
         <button type='submit' className='btnCreate'>Create user</button>
+
+        <div>
+          -----------------------OR-----------------------
+        </div>
+
+        <Link to='/login'>
+          <button className='btnCreate'>Login</button>
+        </Link>
       </form>
     </Layout>
   )

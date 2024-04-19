@@ -41,6 +41,10 @@ function LogIn() {
             if(user.email !== context.account.email){ setMsj({ email: "Email no registrado"})}
             else if(user.pass !== context.account.password){ setMsj({pass: "Pass incorrecta"})}
             else {
+                //asigno true a --> el estado sign-out del localS y mi estado global
+                const stringifiedSignOut = JSON.stringify(true)
+                localStorage.setItem('sign-out', stringifiedSignOut);
+                context.setSignOut(true);
                 navigate('/home');
             }
         }
